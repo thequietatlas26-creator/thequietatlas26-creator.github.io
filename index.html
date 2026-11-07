@@ -3,170 +3,592 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111820">
-  <meta name="description" content="Explore Poland and Europe on foot with The Quiet Atlas. Cinematic walking journeys, overlooked cities, historic streets and unexpected borderlands.">
+  <meta name="theme-color" content="#0d1318">
+  <meta name="description" content="Cinematic walking journeys and slow travel across Poland and Europe. Explore overlooked cities, historic streets, and unexpected borderlands with The Quiet Atlas.">
   <meta name="author" content="The Quiet Atlas">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Open Graph / Facebook / Twitter -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="The Quiet Atlas — Some places are best discovered slowly">
-  <meta property="og:description" content="Walk beyond the familiar. Discover overlooked cities, historic streets and unexpected borderlands across Poland and Europe.">
-  <meta property="og:image" content="https://img.youtube.com/vi/_m3B7nm6fZk/maxresdefault.jpg">
+  <meta property="og:title" content="The Quiet Atlas — Explore • Experience • Understand">
+  <meta property="og:description" content="Cinematic walking journeys to the world's most meaningful places. Discover Poland and Europe at walking pace.">
+  <meta property="og:image" content="assets/channel-banner.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Quiet Atlas — Some places are best discovered slowly">
-  <meta name="twitter:description" content="Cinematic walking journeys through Poland and Europe.">
-  <meta name="twitter:image" content="https://img.youtube.com/vi/_m3B7nm6fZk/maxresdefault.jpg">
-  <title>The Quiet Atlas — Walking Journeys Through Poland & Europe</title>
+  <meta name="twitter:title" content="The Quiet Atlas — Walking Journeys Through Poland & Europe">
+  <meta name="twitter:description" content="Cinematic walking journeys to the world's most meaningful places. Slow travel, visual storytelling, and borderland discoveries.">
+  <meta name="twitter:image" content="assets/channel-banner.jpg">
+
+  <title>The Quiet Atlas — Cinematic Walking Journeys Through Poland & Europe</title>
+
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <link rel="stylesheet" href="style.css">
+
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"The Quiet Atlas",
-    "description":"Cinematic walking journeys and slow travel through Poland and Europe.",
-    "sameAs":["https://www.youtube.com/@theQuiet_Atlas"]
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "The Quiet Atlas",
+    "url": "https://thequietatlas26-creator.github.io/",
+    "description": "Cinematic walking journeys to the world's most meaningful places across Poland and Europe.",
+    "sameAs": [
+      "https://www.youtube.com/@theQuiet_Atlas"
+    ]
   }
   </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- TOP NAVIGATION -->
   <header class="site-header" id="top">
     <div class="nav-shell">
       <a class="wordmark" href="#top" aria-label="The Quiet Atlas home">
         <span class="wordmark-mark" aria-hidden="true">Q</span>
-        <span>THE QUIET <em>ATLAS</em></span>
+        <span class="wordmark-text">
+          <span class="wordmark-title">THE QUIET <em>ATLAS</em></span>
+          <span class="wordmark-sub">POLAND & BEYOND</span>
+        </span>
       </a>
+
       <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation">
-        <span></span><span></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </button>
+
       <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
-        <a href="#about">The idea</a>
+        <a href="#about">The Philosophy</a>
+        <a href="#reel">30s Reel</a>
         <a href="#journeys">Journeys</a>
-        <a href="#map-section">The map</a>
-        <a class="nav-subscribe" href="https://www.youtube.com/@theQuiet_Atlas?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Subscribe <span aria-hidden="true">↗</span></a>
+        <a href="#map-section">The Map</a>
+        <a href="#community">Community & Poster</a>
+        <a class="nav-subscribe-btn" href="https://www.youtube.com/@theQuiet_Atlas?sub_confirmation=1" target="_blank" rel="noopener noreferrer">
+          <svg class="yt-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          <span>Subscribe</span>
+          <span class="arrow-glyph" aria-hidden="true">↗</span>
+        </a>
       </nav>
     </div>
   </header>
 
   <main id="main">
+    <!-- HERO SECTION -->
     <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-image" role="img" aria-label="Atmospheric European city street at dawn"></div>
+      <div class="hero-image" role="img" aria-label="The Quiet Atlas cinematic European journey"></div>
       <div class="hero-shade"></div>
       <div class="hero-grain" aria-hidden="true"></div>
+
       <div class="hero-content page-width">
-        <p class="eyebrow hero-eyebrow"><span></span> CINEMATIC JOURNEYS · POLAND & EUROPE</p>
-        <h1 id="hero-title">Some places are<br><em>best discovered</em><br>slowly.</h1>
-        <p class="hero-copy">Walk beyond the familiar. Cross unexpected borders. Find the stories written into the streets of Europe.</p>
-        <div class="hero-actions">
-          <a class="button button-gold" href="#journeys">Explore the journeys <span aria-hidden="true">↓</span></a>
-          <a class="text-link" href="https://www.youtube.com/@theQuiet_Atlas?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Join us on YouTube <span aria-hidden="true">↗</span></a>
+        <div class="hero-eyebrow reveal">
+          <span class="eyebrow-line"></span>
+          <span class="eyebrow-text">EXPLORE • EXPERIENCE • UNDERSTAND</span>
+          <span class="tag-pill">POLAND & EUROPE</span>
         </div>
+
+        <h1 id="hero-title" class="reveal">
+          Cinematic journeys to the world’s<br>
+          <em>most meaningful</em> places.
+        </h1>
+
+        <p class="hero-copy reveal">
+          Walk beyond the tourist shortcuts. Discover overlooked borderlands, storied avenues, and quiet European dawn streets — filmed at a contemplative walking pace with immersive ambient sound.
+        </p>
+
+        <div class="hero-badges reveal">
+          <span class="badge-item">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14" aria-hidden="true"><path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/><path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/></svg>
+            4K Ultra HD & Spatial Sound
+          </span>
+          <span class="badge-item">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14" aria-hidden="true"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/></svg>
+            Slow Walking Pace
+          </span>
+          <span class="badge-item">
+            <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14" aria-hidden="true"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+            Historic Borderlands & Hidden Cities
+          </span>
+        </div>
+
+        <div class="hero-actions reveal">
+          <a class="button button-youtube" href="https://www.youtube.com/@theQuiet_Atlas?sub_confirmation=1" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            <span>Subscribe on YouTube</span>
+            <span class="sub-cue" aria-hidden="true">↗</span>
+          </a>
+          <a class="button button-gold-outline" href="#reel">
+            <span>Watch 30s Reel</span>
+            <span class="play-mini-glyph" aria-hidden="true">▶</span>
+          </a>
+          <a class="text-link" href="#journeys">
+            <span>Explore all journeys</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+
         <div class="hero-foot">
-          <span>REAL PLACES. UNEXPECTED DISCOVERIES.</span>
-          <span class="scroll-cue"><i></i> SCROLL TO EXPLORE</span>
+          <div class="channel-handle-tag">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span>YOUTUBE CHANNEL: <strong>@theQuiet_Atlas</strong></span>
+          </div>
+          <div class="scroll-cue">
+            <i></i>
+            <span>SCROLL TO DISCOVER</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="intro section-pad" id="about">
+    <!-- CHANNEL SPOTLIGHT STRIP -->
+    <section class="channel-strip" aria-label="Channel overview">
+      <div class="page-width channel-strip-grid">
+        <div class="channel-profile">
+          <div class="avatar-ring">
+            <span class="avatar-letter">Q</span>
+          </div>
+          <div class="profile-details">
+            <div class="channel-name-row">
+              <h3>The Quiet Atlas</h3>
+              <span class="verified-badge" title="Official YouTube Creator">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-label="Verified"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              </span>
+            </div>
+            <p class="channel-bilingual">Hello & welcome • Cześć & witajcie na moim kanale! 🇵🇱</p>
+          </div>
+        </div>
+
+        <div class="channel-pillars">
+          <div class="pillar-chip">
+            <span class="pillar-dot"></span>
+            <span>Slow Travel</span>
+          </div>
+          <div class="pillar-chip">
+            <span class="pillar-dot"></span>
+            <span>Visual Storytelling</span>
+          </div>
+          <div class="pillar-chip">
+            <span class="pillar-dot"></span>
+            <span>Meaningful Journeys</span>
+          </div>
+        </div>
+
+        <div class="channel-strip-cta">
+          <a class="pill-btn" href="https://www.youtube.com/@theQuiet_Atlas" target="_blank" rel="noopener noreferrer">
+            Visit Channel ↗
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 30-SECOND PROMOTIONAL REEL SECTION -->
+    <section class="reel-section section-pad" id="reel" aria-labelledby="reel-heading">
+      <div class="page-width">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">CINEMATIC SHORT · 9:16 PROMO</p>
+            <h2 id="reel-heading">Experience The Quiet Atlas<br><em>in thirty seconds.</em></h2>
+          </div>
+          <p class="section-aside">
+            A quiet immersion into forgotten borders, storied avenues, and the contemplative feeling of being there.
+          </p>
+        </div>
+
+        <div class="reel-layout reveal">
+          <!-- MOBILE/REEL CINEMA FRAME -->
+          <div class="reel-device-card">
+            <div class="reel-device-glass">
+              <div class="reel-ambient-glow" id="reel-glow"></div>
+              <div class="reel-video-container">
+                <video id="promo-video" playsinline loop preload="metadata">
+                  <source src="assets/promo-reel.mp4" type="video/mp4">
+                  Your browser does not support HTML5 video playback.
+                </video>
+
+                <div class="reel-overlay" id="reel-overlay">
+                  <div class="reel-top-badges">
+                    <span class="reel-tag">9:16 CINEMATIC</span>
+                    <span class="reel-live-tag">
+                      <span class="record-dot"></span> 4K SHORT
+                    </span>
+                  </div>
+
+                  <button class="reel-play-btn" id="reel-play-toggle" type="button" aria-label="Play promotional video">
+                    <span class="reel-play-icon" aria-hidden="true"></span>
+                  </button>
+
+                  <div class="reel-bottom-controls">
+                    <div class="reel-meta">
+                      <span class="reel-channel">@theQuiet_Atlas</span>
+                      <span class="reel-caption">Some places are best discovered slowly.</span>
+                    </div>
+
+                    <div class="reel-actions-row">
+                      <button class="reel-mute-btn" id="reel-mute-toggle" type="button" aria-label="Mute or unmute video">
+                        <svg id="icon-sound" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                        </svg>
+                      </button>
+                      <div class="reel-progress-track" id="reel-progress-track">
+                        <div class="reel-progress-fill" id="reel-progress-fill"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="reel-card-caption">
+              <span class="reel-hint">Tap video to Play / Pause</span>
+              <a class="reel-yt-link" href="https://www.youtube.com/@theQuiet_Atlas/shorts" target="_blank" rel="noopener noreferrer">
+                Watch YouTube Shorts ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- REEL FEATURES SIDEBAR -->
+          <div class="reel-story">
+            <div class="story-card">
+              <div class="story-num">01</div>
+              <div class="story-body">
+                <h3>No Rushed Checklists</h3>
+                <p>Most travel channels rush through tourist highlights. We slow down to notice architectural textures, changing weather, and the subtle character of ordinary streets.</p>
+              </div>
+            </div>
+
+            <div class="story-card">
+              <div class="story-num">02</div>
+              <div class="story-body">
+                <h3>Natural Ambient Sound</h3>
+                <p>Recorded with high-fidelity spatial binaural sound. Hear cobblestones underfoot, distant church bells, port gulls, and the gentle rhythm of city life.</p>
+              </div>
+            </div>
+
+            <div class="story-card">
+              <div class="story-num">03</div>
+              <div class="story-body">
+                <h3>Borderlands & Hidden Stories</h3>
+                <p>From twin cities divided by international borders to historic trade highways, we walk the lines where cultures, histories, and everyday lives intersect.</p>
+              </div>
+            </div>
+
+            <div class="reel-cta-box">
+              <p class="reel-quote">
+                “The most memorable journeys are measured by the stories we discover and the connections we make along the way.”
+              </p>
+              <a class="button button-gold" href="https://www.youtube.com/@theQuiet_Atlas?sub_confirmation=1" target="_blank" rel="noopener noreferrer">
+                Join The Channel ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHILOSOPHY / ABOUT SECTION -->
+    <section class="intro section-pad" id="about" aria-labelledby="about-heading">
       <div class="page-width intro-grid">
         <div class="intro-heading reveal">
           <p class="eyebrow">A DIFFERENT WAY TO SEE</p>
-          <h2>Not just the destination.<br><em>The feeling of being there.</em></h2>
+          <h2 id="about-heading">Not just the destination.<br><em>The feeling of being there.</em></h2>
         </div>
         <div class="intro-copy reveal">
-          <p class="lead">The Quiet Atlas is about discovering places at walking pace — the character of a city, the quiet detail of a street, and the unexpected moment just around the corner.</p>
-          <p>From border towns and overlooked cities to historic routes and everyday scenes, these journeys invite you to look a little closer and travel a little slower.</p>
-          <a class="underlined-link" href="#journeys">Find your next journey <span aria-hidden="true">↘</span></a>
+          <p class="lead">
+            The Quiet Atlas is dedicated to slow travel on foot — capturing the soul of a city, the quiet poetry of a forgotten alley, and the unexpected moment waiting just around the corner.
+          </p>
+          <p>
+            From divided border towns on the Oder and Neisse rivers to the post-industrial red-brick courtyards of Łódź and royal routes of Warsaw, every journey invites you to travel a little slower and look a little closer.
+          </p>
+          <a class="underlined-link" href="#journeys">Browse the video archive <span aria-hidden="true">↘</span></a>
         </div>
       </div>
+
       <div class="page-width principles">
-        <article class="principle reveal"><span class="principle-no">01</span><h3>Go beyond<br>the postcard.</h3><p>Look closer at places that rarely make the usual shortlist.</p></article>
-        <article class="principle reveal"><span class="principle-no">02</span><h3>Take the<br>long way.</h3><p>Explore on foot, where the small details become the story.</p></article>
-        <article class="principle reveal"><span class="principle-no">03</span><h3>Follow the<br>connections.</h3><p>Discover where history, geography and everyday life meet.</p></article>
+        <article class="principle reveal">
+          <div class="principle-top">
+            <span class="principle-no">01</span>
+            <span class="principle-icon">🏛</span>
+          </div>
+          <h3>Go beyond<br>the postcard.</h3>
+          <p>Look deeper into overlooked cities and border regions that rarely make the standard tourist recommendations.</p>
+        </article>
+
+        <article class="principle reveal">
+          <div class="principle-top">
+            <span class="principle-no">02</span>
+            <span class="principle-icon">🚶</span>
+          </div>
+          <h3>Take the<br>long way on foot.</h3>
+          <p>Explore at walking pace. When you slow down, the small architectural and human details become the journey’s true story.</p>
+        </article>
+
+        <article class="principle reveal">
+          <div class="principle-top">
+            <span class="principle-no">03</span>
+            <span class="principle-icon">🧭</span>
+          </div>
+          <h3>Follow the<br>connections.</h3>
+          <p>Discover where geography, changing borders, architectural layers, and living memories converge across Poland and Europe.</p>
+        </article>
       </div>
     </section>
 
-    <section class="journeys section-pad" id="journeys">
+    <!-- VIDEO JOURNALS / ARCHIVE SECTION -->
+    <section class="journeys section-pad" id="journeys" aria-labelledby="journeys-heading">
       <div class="page-width">
         <div class="section-heading reveal">
-          <div><p class="eyebrow">THE VIDEO JOURNAL</p><h2>Choose a direction.<br><em>See where it leads.</em></h2></div>
-          <p class="section-aside">Six walks to begin with.<br>Many more places to discover.</p>
+          <div>
+            <p class="eyebrow">THE VIDEO JOURNAL</p>
+            <h2 id="journeys-heading">Choose a direction.<br><em>See where it leads.</em></h2>
+          </div>
+          <p class="section-aside">
+            Six in-depth walking journeys to begin with.<br>Many more places to discover.
+          </p>
         </div>
 
-        <article class="featured reveal">
-          <button class="video-frame" id="featured-player" type="button" data-video-id="_m3B7nm6fZk" aria-label="Play Can You Just Walk Across the German-Polish Border?">
-            <img src="https://img.youtube.com/vi/_m3B7nm6fZk/maxresdefault.jpg" alt="Görlitz and Zgorzelec border walk video thumbnail" fetchpriority="high">
+        <!-- FILTER BAR -->
+        <div class="journey-filters reveal" role="tablist" aria-label="Filter journeys by category">
+          <button class="filter-btn active" type="button" role="tab" aria-selected="true" data-filter="all">All Journeys (6)</button>
+          <button class="filter-btn" type="button" role="tab" aria-selected="false" data-filter="borderlands">Borderlands & Crossings (2)</button>
+          <button class="filter-btn" type="button" role="tab" aria-selected="false" data-filter="cities">Overlooked Cities (2)</button>
+          <button class="filter-btn" type="button" role="tab" aria-selected="false" data-filter="streets">Historic Routes (2)</button>
+        </div>
+
+        <!-- FEATURED THEATER PLAYER -->
+        <article class="featured reveal" id="theater-box">
+          <div class="featured-header">
+            <span class="theater-badge">FEATURED CINEMATIC THEATER</span>
+            <span class="theater-now-playing" id="theater-now-playing">Playing: Görlitz & Zgorzelec Border Crossing</span>
+          </div>
+
+          <button class="video-frame" id="featured-player" type="button" data-video-id="_m3B7nm6fZk" aria-label="Play featured video: Can You Just Walk Across The German-Polish Border?">
+            <img id="theater-poster" src="https://img.youtube.com/vi/_m3B7nm6fZk/maxresdefault.jpg" alt="Görlitz and Zgorzelec border walk video thumbnail" fetchpriority="high" onerror="this.onerror=null; this.src='https://img.youtube.com/vi/_m3B7nm6fZk/hqdefault.jpg';">
             <span class="frame-vignette"></span>
-            <span class="play-button" aria-hidden="true"><span></span></span>
-            <span class="frame-label">FEATURED JOURNEY <b>01 / 06</b></span>
+            <span class="play-button" aria-hidden="true">
+              <span class="play-triangle"></span>
+            </span>
+            <span class="frame-label">WATCH FEATURED JOURNEY <b>01 / 06</b></span>
           </button>
+
           <div class="featured-caption">
-            <div><p class="eyebrow">GERMANY → POLAND · GÖRLITZ / ZGORZELEC</p><h3>Can you just walk across<br>the German–Polish border?</h3></div>
-            <a class="round-arrow" href="https://www.youtube.com/watch?v=_m3B7nm6fZk" target="_blank" rel="noopener noreferrer" aria-label="Open featured video on YouTube">↗</a>
+            <div class="caption-content">
+              <p class="eyebrow" id="theater-eyebrow">GERMANY → POLAND · GÖRLITZ / ZGORZELEC</p>
+              <h3 id="theater-title">Can you just walk across the German–Polish border?</h3>
+              <p class="theater-desc" id="theater-desc">
+                Walking across the historic Old Town Bridge over the Lusatian Neisse river connecting twin cities divided by 1945 post-war borders.
+              </p>
+            </div>
+            <a class="round-arrow" id="theater-yt-btn" href="https://www.youtube.com/watch?v=_m3B7nm6fZk" target="_blank" rel="noopener noreferrer" aria-label="Open video on YouTube">
+              <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </article>
 
-        <div class="collection-block reveal">
-          <div class="collection-title"><div><span class="collection-index">01</span><h3>Borderlands & hidden connections</h3></div><p>Where countries, cultures and histories meet.</p></div>
-          <div class="video-grid" id="collection-borderlands"></div>
+        <!-- DYNAMIC VIDEO GRID -->
+        <div class="all-journeys-grid reveal" id="videos-grid">
+          <!-- Rendered dynamically by script.js -->
         </div>
-        <div class="collection-block reveal">
-          <div class="collection-title"><div><span class="collection-index">02</span><h3>Cities beyond the postcard</h3></div><p>Places that deserve a longer look.</p></div>
-          <div class="video-grid" id="collection-cities"></div>
+
+        <div class="all-videos reveal">
+          <a class="button button-outline" href="https://www.youtube.com/@theQuiet_Atlas/videos" target="_blank" rel="noopener noreferrer">
+            <span>Explore All Episodes on YouTube</span>
+            <span aria-hidden="true">↗</span>
+          </a>
         </div>
-        <div class="collection-block reveal">
-          <div class="collection-title"><div><span class="collection-index">03</span><h3>Streets, stories & heritage</h3></div><p>Historic routes and the character of a place.</p></div>
-          <div class="video-grid" id="collection-streets"></div>
-        </div>
-        <div class="all-videos reveal"><a class="button button-outline" href="https://www.youtube.com/@theQuiet_Atlas/videos" target="_blank" rel="noopener noreferrer">Explore all videos on YouTube <span aria-hidden="true">↗</span></a></div>
       </div>
     </section>
 
-    <section class="map-section section-pad" id="map-section">
+    <!-- INTERACTIVE MAP SECTION -->
+    <section class="map-section section-pad" id="map-section" aria-labelledby="map-heading">
       <div class="page-width">
         <div class="section-heading map-heading reveal">
-          <div><p class="eyebrow">THE JOURNEYS, MAPPED</p><h2>A growing atlas<br><em>of places explored.</em></h2></div>
-          <p class="section-aside">Every marker is a place featured in a Quiet Atlas journey. Select one to find the walk.</p>
+          <div>
+            <p class="eyebrow">THE JOURNEYS, MAPPED</p>
+            <h2 id="map-heading">A growing atlas<br><em>of places explored.</em></h2>
+          </div>
+          <p class="section-aside">
+            Every marker corresponds to a published walking journey. Click any destination to inspect the walk.
+          </p>
         </div>
+
         <div class="map-layout reveal">
           <div class="map-wrap">
-            <div id="journey-map" aria-label="Interactive map showing the six destinations featured in The Quiet Atlas videos"></div>
-            <div class="map-note"><span class="map-dot"></span> SIX PLACES · ONE GROWING ATLAS</div>
+            <div id="journey-map" aria-label="Interactive dark cartography map showing The Quiet Atlas destinations across Poland and Europe"></div>
+            <div class="map-note">
+              <span class="map-dot"></span>
+              <span>SIX PLACES · ONE CONTINUOUS DISCOVERY</span>
+            </div>
           </div>
+
           <aside class="map-side">
-            <p class="eyebrow">SELECT A DESTINATION</p>
-            <div class="destination-list" id="destination-list"></div>
-            <p class="map-footnote">Map data © OpenStreetMap contributors.</p>
+            <div class="map-side-header">
+              <p class="eyebrow">SELECT A DESTINATION</p>
+              <span class="map-count">6 LOCATIONS</span>
+            </div>
+            <div class="destination-list" id="destination-list">
+              <!-- Rendered dynamically by script.js -->
+            </div>
+            <p class="map-footnote">Cartography data © OpenStreetMap & CARTO Dark Matter.</p>
           </aside>
         </div>
       </div>
     </section>
 
-    <section class="closing">
+    <!-- COMMUNITY, QR CODE & PRINTABLE POSTER SECTION -->
+    <section class="community-section section-pad" id="community" aria-labelledby="community-heading">
+      <div class="page-width">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">TAKE THE ATLAS WITH YOU</p>
+            <h2 id="community-heading">Scan to subscribe.<br><em>Hang the printable poster.</em></h2>
+          </div>
+          <p class="section-aside">
+            Whether you are exploring from your phone or sharing the channel with your local community.
+          </p>
+        </div>
+
+        <div class="community-grid reveal">
+          <!-- CARD A: SCAN TO SUBSCRIBE QR -->
+          <article class="comm-card qr-card">
+            <div class="card-glass">
+              <div class="card-badge">INSTANT MOBILE SUBSCRIPTION</div>
+              <div class="qr-visual-box">
+                <img src="assets/qr-code.jpg" alt="Official YouTube subscription QR Code for The Quiet Atlas" class="qr-image" loading="lazy">
+                <div class="qr-scan-lens" aria-hidden="true"></div>
+              </div>
+              <div class="card-text">
+                <h3>Scan with your camera</h3>
+                <p>Point your smartphone camera at the QR code to open <strong>@theQuiet_Atlas</strong> directly in your YouTube app and subscribe with a single tap.</p>
+                <div class="qr-action-row">
+                  <a class="button button-gold-sm" href="https://www.youtube.com/@theQuiet_Atlas?sub_confirmation=1" target="_blank" rel="noopener noreferrer">
+                    Open in YouTube ↗
+                  </a>
+                  <button class="copy-link-btn" id="copy-channel-link" type="button" aria-label="Copy channel link to clipboard">
+                    <span id="copy-btn-text">Copy Channel Link</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- CARD B: OFFICIAL DISTRIBUTION POSTER -->
+          <article class="comm-card poster-card">
+            <div class="card-glass">
+              <div class="card-badge">OFFICIAL DISTRIBUTION PRINTABLE</div>
+              <div class="poster-preview-box">
+                <div class="poster-mock">
+                  <div class="poster-mock-header">
+                    <span>EXPLORE • EXPERIENCE • UNDERSTAND</span>
+                  </div>
+                  <div class="poster-mock-brand">THE QUIET ATLAS</div>
+                  <div class="poster-mock-tag">CINEMATIC JOURNEYS TO THE WORLD'S MOST MEANINGFUL PLACES</div>
+                  <div class="poster-mock-lang">🇵🇱 Hello & Welcome • Cześć & witajcie!</div>
+                  <div class="poster-mock-quote">“The most memorable journeys are measured by the stories we discover...”</div>
+                  <div class="poster-mock-footer">
+                    <span>A4 Format (210 × 297 mm)</span>
+                    <span class="poster-pdf-badge">PDF READY</span>
+                  </div>
+                </div>
+              </div>
+              <div class="card-text">
+                <h3>Official Channel Poster (A4)</h3>
+                <p>High-resolution printable companion designed for bulletin boards, indie bookshops, travel clubs, and cultural cafes.</p>
+                <div class="poster-action-row">
+                  <a class="button button-outline-sm" href="assets/the-quiet-atlas-poster.pdf" target="_blank" rel="noopener noreferrer" download="The-Quiet-Atlas-A4-Poster.pdf">
+                    <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                    <span>Download A4 Printable (PDF)</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSING CALL TO ACTION -->
+    <section class="closing" aria-labelledby="closing-title">
       <div class="closing-backdrop" aria-hidden="true"></div>
+      <div class="closing-shade" aria-hidden="true"></div>
+
       <div class="page-width closing-content reveal">
         <p class="eyebrow">YOUR NEXT DISCOVERY STARTS HERE</p>
-        <h2>There is always<br><em>another way to see.</em></h2>
-        <p>Come along for the walk. Discover a new place, notice something unexpected, and see where the journey takes you.</p>
-        <a class="button button-gold" href="https://www.youtube.com/@theQuiet_Atlas?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Subscribe to The Quiet Atlas <span aria-hidden="true">↗</span></a>
+        <h2 id="closing-title">There is always<br><em>another way to see.</em></h2>
+        <p>
+          Come along for the walk. Discover a new borderland, notice something unexpected, and let the journey unfold one story at a time.
+        </p>
+        <p class="closing-signoff">
+          Subscribe to join me and explore the world one story at a time. <strong>Dziękuję!</strong>
+        </p>
+        <div class="closing-actions">
+          <a class="button button-gold-large" href="https://www.youtube.com/@theQuiet_Atlas?sub_confirmation=1" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+            </svg>
+            <span>Subscribe to The Quiet Atlas</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="page-width footer-main">
-      <a class="wordmark footer-wordmark" href="#top"><span class="wordmark-mark">Q</span><span>THE QUIET <em>ATLAS</em></span></a>
-      <p>Real places. Unexpected discoveries.<br>Slower journeys.</p>
-      <a class="footer-youtube" href="https://www.youtube.com/@theQuiet_Atlas" target="_blank" rel="noopener noreferrer">Find us on YouTube ↗</a>
+      <div class="footer-brand">
+        <a class="wordmark footer-wordmark" href="#top">
+          <span class="wordmark-mark" aria-hidden="true">Q</span>
+          <span class="wordmark-text">
+            <span class="wordmark-title">THE QUIET <em>ATLAS</em></span>
+            <span class="wordmark-sub">POLAND & EUROPE</span>
+          </span>
+        </a>
+        <p class="footer-tagline">
+          Real places. Unexpected discoveries. Slower journeys.<br>
+          Filmed on foot across Poland and Central Europe.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <a href="#about">The Philosophy</a>
+          <a href="#reel">30s Reel</a>
+          <a href="#journeys">Journeys</a>
+          <a href="#map-section">The Map</a>
+          <a href="#community">Community & Poster</a>
+        </div>
+        <div class="footer-col">
+          <h4>YouTube</h4>
+          <a href="https://www.youtube.com/@theQuiet_Atlas" target="_blank" rel="noopener noreferrer">Channel Home ↗</a>
+          <a href="https://www.youtube.com/@theQuiet_Atlas/videos" target="_blank" rel="noopener noreferrer">All Videos ↗</a>
+          <a href="https://www.youtube.com/@theQuiet_Atlas/shorts" target="_blank" rel="noopener noreferrer">YouTube Shorts ↗</a>
+          <a href="https://www.youtube.com/@theQuiet_Atlas?sub_confirmation=1" target="_blank" rel="noopener noreferrer">Subscribe ↗</a>
+        </div>
+      </div>
     </div>
-    <div class="page-width footer-bottom"><span>© <span id="year"></span> The Quiet Atlas</span><a href="#top">Back to the beginning ↑</a><span>MADE FOR THE CURIOUS</span></div>
+
+    <div class="page-width footer-bottom">
+      <span>© <span id="year"></span> The Quiet Atlas. All rights reserved.</span>
+      <a class="back-link" href="#top">Back to top ↑</a>
+      <span class="footer-badge">MADE FOR THE CURIOUS EXPLORER</span>
+    </div>
   </footer>
 
-  <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">↑</button>
+  <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="19" x2="12" y2="5"></line>
+      <polyline points="5 12 12 5 19 12"></polyline>
+    </svg>
+  </button>
+
+  <!-- SCRIPTS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script src="script.js" defer></script>
 </body>
