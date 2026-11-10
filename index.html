@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="style.css?v=2.6.0">
+  <link rel="stylesheet" href="style.css?v=2.7.0">
   <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 
   <script type="application/ld+json">
@@ -81,6 +81,7 @@
         <a href="#reel">34s Reel</a>
         <a href="#map-section">The Map</a>
         <a href="#dispatches">Dispatches</a>
+        <a href="#latest">Latest</a>
         <a class="nav-subscribe-btn" href="https://www.youtube.com/@theQuiet_Atlas?sub_confirmation=1" target="_blank" rel="noopener noreferrer">
           <svg class="yt-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
             <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
@@ -448,6 +449,59 @@
       </div>
     </section>
 
+    <!-- LATEST UPLOADS SECTION -->
+    <section class="latest-section section-pad" id="latest" aria-labelledby="latest-heading">
+      <div class="page-width">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow">FRESH FROM THE CHANNEL</p>
+            <h2 id="latest-heading">Latest uploads,<br><em>always up to date.</em></h2>
+          </div>
+          <p class="section-aside">
+            Pulled live from the channel.<br>Videos &amp; Shorts, newest first.
+          </p>
+        </div>
+
+        <!-- TAB BAR -->
+        <div class="latest-tabs reveal" role="tablist" aria-label="Latest uploads type">
+          <button class="latest-tab active" role="tab" aria-selected="true"  aria-controls="latest-videos-panel" id="tab-videos"  type="button" data-tab="videos">Videos</button>
+          <button class="latest-tab"        role="tab" aria-selected="false" aria-controls="latest-shorts-panel" id="tab-shorts"  type="button" data-tab="shorts">Shorts</button>
+        </div>
+
+        <!-- VIDEOS PANEL -->
+        <div class="latest-panel reveal" id="latest-videos-panel" role="tabpanel" aria-labelledby="tab-videos">
+          <div class="latest-grid" id="latest-videos-grid">
+            <!-- Rendered by script.js -->
+            <div class="latest-loading" id="latest-videos-loading">
+              <span class="latest-spinner" aria-hidden="true"></span>
+              <span>Loading latest videos&hellip;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SHORTS PANEL -->
+        <div class="latest-panel reveal" id="latest-shorts-panel" role="tabpanel" aria-labelledby="tab-shorts" hidden>
+          <div class="latest-grid latest-grid--shorts" id="latest-shorts-grid">
+            <div class="latest-loading" id="latest-shorts-loading">
+              <span class="latest-spinner" aria-hidden="true"></span>
+              <span>Loading latest Shorts&hellip;</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="all-videos reveal" style="margin-top:2.5rem;">
+          <a class="button button-outline" href="https://www.youtube.com/@theQuiet_Atlas/videos" target="_blank" rel="noopener noreferrer">
+            <span>All Videos on YouTube</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a class="button button-outline" href="https://www.youtube.com/@theQuiet_Atlas/shorts" target="_blank" rel="noopener noreferrer">
+            <span>All Shorts on YouTube</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- CLOSING CALL TO ACTION -->
     <section class="closing" aria-labelledby="closing-title">
       <div class="closing-backdrop" aria-hidden="true"></div>
@@ -542,7 +596,8 @@
 
   <!-- SCRIPTS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="script.js?v=2.6.0" defer></script>
+  <script src="script.js?v=2.7.0" defer></script>
 </body>
 </html>
+
 

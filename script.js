@@ -619,7 +619,153 @@ function setupDispatchesForm() {
 }
 
 // ---------------------------------------------------------------------------
-// 9. Initialization
+// 9. Latest Uploads (live YouTube RSS → rss2json proxy)
+// ---------------------------------------------------------------------------
+(function setupLatestUploads() {
+  const CHANNEL_ID = "UCw_YDvJ1Em89PRyywEhOykQ";
+  const RSS_URL    = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
+  const PROXY_URL  = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}&count=15`;
+
+  const videosGrid   = document.getElementById("latest-videos-grid");
+  const shortsGrid   = document.getElementById("latest-shorts-grid");
+  const videosLoad   = document.getElementById("latest-videos-loading");
+  const shortsLoad   = document.getElementById("latest-shorts-loading");
+  const tabButtons   = document.querySelectorAll(".latest-tab");
+  const panels       = document.querySelectorAll(".latest-panel");
+
+  if (!videosGrid || !shortsGrid) return;
+
+  // ── Tab switching ──────────────────────────────────────────────────────────
+  tabButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      tabButtons.forEach(b => { b.classList.remove("active"); b.setAttribute("aria-selected", "false"); });
+      btn.classList.add("active");
+      btn.setAttribute("aria-selected", "true");
+      const target = btn.dataset.tab; // "videos" or "shorts"
+      panels.forEach(p => {
+        p.hidden = (p.id !== `latest-${target}-panel`);
+      });
+    });
+  });
+
+  // ── Helpers ────────────────────────────────────────────────────────────────
+  function isShort(item) {
+    // Shorts appear with /shorts/ in the link, or the title contains #shorts / #short
+    return /\/shorts\//i.test(item.link) || /#shorts?\b/i.test(item.title);
+  }
+
+  function relativeDate(isoString) {
+    const diff = Date.now() - new Date(isoString).getTime();
+    const m = Math.floor(diff / 60000);
+    if (m < 2)   return "just now";
+    if (m < 60)  return `${m}m ago`;
+    const h = Math.floor(m / 60);
+    if (h < 24)  return `${h}h ago`;
+    const d = Math.floor(h / 24);
+    if (d < 7)   return `${d}d ago`;
+    const w = Math.floor(d / 7);
+    if (w < 5)   return `${w}w ago`;
+    const mo = Math.floor(d / 30);
+    if (mo < 12) return `${mo}mo ago`;
+    return `${Math.floor(mo / 12)}y ago`;
+  }
+
+  function formatViews(n) {
+    n = parseInt(n, 10);
+    if (isNaN(n) || n === 0) return null;
+    if (n >= 1000000) return `${(n / 1000000).toFixed(1)}M views`;
+    if (n >= 1000)    return `${(n / 1000).toFixed(0)}K views`;
+    return `${n} views`;
+  }
+
+  function buildCard(item, isPortrait) {
+    const videoId = (item.link.match(/(?:v=|\/shorts\/|\/embed\/|youtu\.be\/)([A-Za-z0-9_-]{11})/) || [])[1] || "";
+    const thumb   = videoId
+      ? `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+      : (item.thumbnail || "");
+    const views   = formatViews(item.statistics?.views);
+    const date    = relativeDate(item.pubDate || item.published);
+    const href    = item.link || `https://www.youtube.com/watch?v=${videoId}`;
+    const title   = item.title || "Untitled";
+
+    const thumbClass = isPortrait ? "latest-thumb latest-thumb--short" : "latest-thumb latest-thumb--video";
+
+    return `
+      <a class="latest-card reveal" href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${title.replace(/"/g, '&quot;')}">
+        <div class="${thumbClass}">
+          <img src="${thumb}" alt="${title.replace(/"/g, '&quot;')}" loading="lazy"
+               onerror="this.onerror=null;this.src='https://img.youtube.com/vi/${videoId}/mqdefault.jpg';">
+          <div class="latest-play" aria-hidden="true">
+            <span class="latest-play-icon">
+              <span class="latest-play-triangle"></span>
+            </span>
+          </div>
+        </div>
+        <div class="latest-info">
+          <p class="latest-info-title">${title}</p>
+          <div class="latest-info-meta">
+            <span>${date}</span>
+            ${views ? `<span class="sep">·</span><span>${views}</span>` : ""}
+          </div>
+        </div>
+      </a>`;
+  }
+
+  function showError(grid, loadEl) {
+    if (loadEl) loadEl.remove();
+    grid.insertAdjacentHTML("beforeend", `
+      <div class="latest-error">
+        <span>Could not load uploads. <a class="underlined-link" href="https://www.youtube.com/@theQuiet_Atlas/videos" target="_blank" rel="noopener noreferrer">View on YouTube ↗</a></span>
+      </div>`);
+  }
+
+  // ── Fetch ──────────────────────────────────────────────────────────────────
+  fetch(PROXY_URL)
+    .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(data => {
+      if (data.status !== "ok" || !Array.isArray(data.items) || !data.items.length) {
+        throw new Error("No items");
+      }
+
+      const videos = data.items.filter(i => !isShort(i));
+      const shorts = data.items.filter(i =>  isShort(i));
+
+      // Populate videos
+      if (videosLoad) videosLoad.remove();
+      if (videos.length) {
+        videosGrid.insertAdjacentHTML("beforeend", videos.map(i => buildCard(i, false)).join(""));
+      } else {
+        videosGrid.insertAdjacentHTML("beforeend", `<div class="latest-error"><span>No videos yet — <a class="underlined-link" href="https://www.youtube.com/@theQuiet_Atlas/videos" target="_blank" rel="noopener noreferrer">browse on YouTube ↗</a></span></div>`);
+      }
+
+      // Populate shorts
+      if (shortsLoad) shortsLoad.remove();
+      if (shorts.length) {
+        shortsGrid.insertAdjacentHTML("beforeend", shorts.map(i => buildCard(i, true)).join(""));
+      } else {
+        shortsGrid.insertAdjacentHTML("beforeend", `<div class="latest-error"><span>No Shorts found — <a class="underlined-link" href="https://www.youtube.com/@theQuiet_Atlas/shorts" target="_blank" rel="noopener noreferrer">browse on YouTube ↗</a></span></div>`);
+      }
+
+      // Wire new cards into the reveal observer (if scroll effects already ran)
+      document.querySelectorAll(".latest-card:not(.is-visible)").forEach(el => {
+        if ("IntersectionObserver" in window) {
+          const obs = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("is-visible"); obs.unobserve(e.target); } });
+          }, { threshold: 0.08 });
+          obs.observe(el);
+        } else {
+          el.classList.add("is-visible");
+        }
+      });
+    })
+    .catch(() => {
+      showError(videosGrid, videosLoad);
+      showError(shortsGrid, shortsLoad);
+    });
+})();
+
+// ---------------------------------------------------------------------------
+// 10. Initialization
 // ---------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   renderProof();
