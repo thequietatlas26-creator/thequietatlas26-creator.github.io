@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-  <link rel="stylesheet" href="style.css?v=2.9.0">
+  <link rel="stylesheet" href="style.css?v=2.10.0">
   <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
   <script>
     /* Safety fallback: guarantee all content is visible if animations or scripts are delayed */
@@ -90,6 +90,7 @@
         <a href="#journeys">Featured Walks</a>
         <a href="#reel">34s Reel</a>
         <a href="#map-section">The Map</a>
+        <a href="#suggest">Suggest a Place</a>
         <a href="#dispatches">Dispatches</a>
         <a href="#latest">Latest</a>
         <a class="nav-subscribe-btn" href="https://www.youtube.com/@theQuiet_Atlas?sub_confirmation=1" target="_blank" rel="noopener noreferrer">
@@ -434,6 +435,88 @@
             <p class="map-footnote">Map data © OpenStreetMap contributors.</p>
           </aside>
         </div>
+
+        <div class="map-suggest-callout reveal">
+          <div>
+            <strong>Missing your hometown in Poland?</strong>
+            <span>Suggest an atmospheric walking destination, or offer to guide a walk when I visit!</span>
+          </div>
+          <a href="#suggest" class="map-suggest-btn">
+            <span>Suggest a Place & Show Me Around</span>
+            <svg class="arrow-icon" viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="3" x2="8" y2="13"></line><polyline points="4 9 8 13 12 9"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUGGEST A DESTINATION & LOCAL GUIDE INVITATION -->
+    <section class="suggest-section section-pad" id="suggest" aria-labelledby="suggest-heading">
+      <div class="page-width">
+        <div class="suggest-card reveal">
+          <div class="suggest-header">
+            <p class="eyebrow">COMMUNITY TRAVEL ATLAS · POLAND</p>
+            <h2 id="suggest-heading">Where should I walk next?<br><em>Show me around your city.</em></h2>
+            <p class="suggest-lead">
+              The most atmospheric walking journeys come from locals who know the quietest alleys, the best dawn light, and the stories behind forgotten facades. Tell me about your town in Poland — or let me know if you’d like to meet up and guide me around when I visit!
+            </p>
+          </div>
+
+          <form class="suggest-form" id="suggest-form" action="https://formsubmit.co/ajax/thequiet.atlas26@gmail.com" method="POST">
+            <!-- Anti-spam honeypot & settings -->
+            <input type="text" name="_honey" style="display:none">
+            <input type="hidden" name="_subject" value="[The Quiet Atlas] New Destination Suggestion!">
+            <input type="hidden" name="_template" value="table">
+
+            <div class="suggest-grid">
+              <div class="suggest-field">
+                <label for="suggest-city">City, Town or Region in Poland <span class="req">*</span></label>
+                <input type="text" id="suggest-city" name="destination" placeholder="e.g. Toruń, Przemyśl, Kłodzko, Hel..." required autocomplete="off">
+              </div>
+
+              <div class="suggest-field">
+                <label for="suggest-name">Your Name or Handle <span class="opt">(optional)</span></label>
+                <input type="text" id="suggest-name" name="name" placeholder="e.g. Kasia / @instagram" autocomplete="name">
+              </div>
+
+              <div class="suggest-field suggest-field--full">
+                <label for="suggest-story">What makes it special? Any hidden streets or routes? <span class="req">*</span></label>
+                <textarea id="suggest-story" name="highlights" rows="3" placeholder="Tell me what to look for: a peaceful morning walk, a historic bridge, overlooked brick architecture, or a local secret..." required></textarea>
+              </div>
+
+              <div class="suggest-field suggest-field--full">
+                <div class="guide-toggle-box">
+                  <label class="custom-checkbox-label">
+                    <input type="checkbox" id="suggest-guide" name="wants_to_guide" value="yes">
+                    <span class="custom-checkbox-visual" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 8 7 12 13 4"></polyline></svg>
+                    </span>
+                    <span class="guide-toggle-text">
+                      <strong>I'd love to show you around in person when you visit! 🤝</strong>
+                      <small>No pressure — only if timing, dates, and schedules align.</small>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="suggest-field suggest-field--full" id="guide-contact-wrap">
+                <label for="suggest-contact">How should I reach you? <span class="opt">(email, Instagram, or WhatsApp)</span></label>
+                <input type="text" id="suggest-contact" name="contact_info" placeholder="e.g. yourname@email.com, @your_handle, or +48..." autocomplete="email">
+              </div>
+            </div>
+
+            <div class="suggest-submit-row">
+              <button type="submit" class="button button-gold-large" id="suggest-submit-btn">
+                <span>Send Destination Suggestion</span>
+                <svg class="arrow-icon" viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="8" x2="13" y2="8"></line><polyline points="9 4 13 8 9 12"></polyline></svg>
+              </button>
+              <span class="suggest-alt-link">
+                Prefer email directly? <a href="mailto:thequiet.atlas26@gmail.com?subject=Travel%20Suggestion%20for%20The%20Quiet%20Atlas" class="underlined-link">thequiet.atlas26@gmail.com <svg class="arrow-icon" viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="12" y2="4"></line><polyline points="5 4 12 4 12 11"></polyline></svg></a>
+              </span>
+            </div>
+
+            <div class="form-feedback" id="suggest-feedback" aria-live="polite"></div>
+          </form>
+        </div>
       </div>
     </section>
 
@@ -565,6 +648,7 @@
           <a href="#journeys">Featured Walks</a>
           <a href="#reel">34s Reel</a>
           <a href="#map-section">The Map</a>
+          <a href="#suggest">Suggest a Walk</a>
           <a href="#dispatches">Dispatches</a>
         </div>
         <div class="footer-col">
@@ -615,7 +699,7 @@
 
   <!-- SCRIPTS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="script.js?v=2.9.0" defer></script>
+  <script src="script.js?v=2.10.0" defer></script>
 </body>
 </html>
 

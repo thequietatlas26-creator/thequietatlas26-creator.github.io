@@ -619,6 +619,96 @@ function setupDispatchesForm() {
 }
 
 // ---------------------------------------------------------------------------
+// 8b. Suggest a Destination & Local Guide Form
+// ---------------------------------------------------------------------------
+function setupSuggestForm() {
+  const form = document.getElementById("suggest-form");
+  const cityInput = document.getElementById("suggest-city");
+  const storyInput = document.getElementById("suggest-story");
+  const nameInput = document.getElementById("suggest-name");
+  const guideCheckbox = document.getElementById("suggest-guide");
+  const contactInput = document.getElementById("suggest-contact");
+  const submitBtn = document.getElementById("suggest-submit-btn");
+  const feedback = document.getElementById("suggest-feedback");
+
+  if (!form || !cityInput || !storyInput || !feedback) return;
+
+  form.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const city = cityInput.value.trim();
+    const story = storyInput.value.trim();
+    const name = nameInput?.value.trim() || "Anonymous Traveler";
+    const wantsToGuide = guideCheckbox?.checked ? "YES — Wants to guide in person 🤝" : "Suggestion only";
+    const contact = contactInput?.value.trim() || "(None provided)";
+
+    if (!city || !story) {
+      feedback.className = "form-feedback error";
+      feedback.textContent = "Please provide both a destination in Poland and what makes it special.";
+      return;
+    }
+
+    const originalBtnHtml = submitBtn ? submitBtn.innerHTML : "";
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span>Sending Suggestion...</span>`;
+    }
+
+    // Save locally so nothing is ever lost
+    try {
+      const existing = JSON.parse(localStorage.getItem("tqa_suggestions") || "[]");
+      existing.push({ city, story, name, wantsToGuide, contact, date: new Date().toISOString() });
+      localStorage.setItem("tqa_suggestions", JSON.stringify(existing));
+    } catch (_) {}
+
+    // Prepare payload for FormSubmit email forwarding
+    const payload = {
+      Destination: city,
+      Highlights_and_Story: story,
+      Guide_in_Person: wantsToGuide,
+      Suggested_By: name,
+      Contact_Info: contact,
+      _subject: `[The Quiet Atlas] Destination Suggestion: ${city} (from ${name})`
+    };
+
+    let sentViaAjax = false;
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/thequiet.atlas26@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+      if (response.ok) {
+        sentViaAjax = true;
+      }
+    } catch (_) {}
+
+    // Feedback response
+    feedback.className = "form-feedback success";
+    if (sentViaAjax) {
+      feedback.textContent = `✓ Dziękuję! Your suggestion for ${city} has been received. I'll review it for upcoming walking journeys!`;
+    } else {
+      const mailSubject = encodeURIComponent(`[The Quiet Atlas] Walk Suggestion: ${city}`);
+      const mailBody = encodeURIComponent(`Hi Quiet Atlas,\n\nI suggest a walking journey in: ${city}\n\nWhat makes it special:\n${story}\n\nWilling to show you around: ${wantsToGuide}\nContact info: ${contact}\n\nBest,\n${name}`);
+      feedback.innerHTML = `✓ Dziękuję! Suggestion saved. <a href="mailto:thequiet.atlas26@gmail.com?subject=${mailSubject}&body=${mailBody}" class="underlined-link" style="color: var(--gold-bright); font-weight: 700;">Click here to confirm via email to thequiet.atlas26@gmail.com ↗</a>`;
+    }
+
+    form.reset();
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `<span>Suggestion Sent! ✓</span>`;
+      setTimeout(() => {
+        submitBtn.innerHTML = originalBtnHtml;
+      }, 4000);
+    }
+  });
+}
+
+// ---------------------------------------------------------------------------
 // 9. Latest Uploads (live YouTube RSS → rss2json proxy)
 // ---------------------------------------------------------------------------
 function setupLatestUploads() {
@@ -776,6 +866,7 @@ function initApp() {
   setupPromoReel();
   setupMap();
   setupDispatchesForm();
+  setupSuggestForm();
   setupCopyLink();
   setupNavigation();
   setupLatestUploads();
