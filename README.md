@@ -19,7 +19,7 @@ Designed around slow travel, contemplative walking journeys, overlooked cities, 
   - Custom HTML5 mobile device frame showcasing the 34-second promotional video (`assets/promo-reel.mp4`) with dedicated poster (`assets/reel-poster.jpg`).
   - Interactive play/pause, volume mute/unmute, progress scrub bar, and auto-pause when scrolled out of view.
 - **Interactive Dark Cartography Map**:
-  - Built with Leaflet and CARTO Dark Matter tiles (OpenStreetMap data) to seamlessly match the channel's dark aesthetic without requiring paid API keys.
+  - Built with Leaflet and standard OpenStreetMap tiles with custom dark cartography styling to seamlessly match the channel's dark aesthetic without requiring any API keys.
   - Glowing gold location pins with pulse animations for featured destinations.
   - Synchronized destination sidebar: selecting any location triggers smooth animated fly-to, opens the pin popup, and allows one-click playback in the featured theater.
 - **The Quiet Dispatches (Email Notification Fallback)**:

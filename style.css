@@ -1672,11 +1672,11 @@ h1 em, h2 em, h3 em {
 #journey-map {
   width: 100%;
   height: 520px;
-  background: #d8d6cc;
+  background: #111820;
 }
 
 #journey-map .leaflet-tile-pane {
-  filter: brightness(0.95) contrast(1.05) saturate(0.95);
+  filter: brightness(0.65) invert(1) contrast(2.6) hue-rotate(200deg) saturate(0.3);
 }
 
 .map-note {
