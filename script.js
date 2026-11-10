@@ -262,7 +262,7 @@ function renderJourneys(filter = "all") {
              loading="lazy"
              decoding="async"
              onerror="this.onerror=null; this.src='${thumbUrl(journey.id)}';">
-        <span class="card-play-pill" aria-hidden="true">▶</span>
+        <span class="card-play-pill" aria-hidden="true"><svg viewBox="0 0 16 16" width="11" height="11" fill="currentColor"><polygon points="4,2 14,8 4,14"></polygon></svg></span>
       </button>
 
       <div class="journey-body">
@@ -275,12 +275,12 @@ function renderJourneys(filter = "all") {
 
         <div class="journey-actions-row">
           <button class="quick-load-btn" type="button" data-play="${journey.id}">
-            <span aria-hidden="true">▶</span>
+            <svg viewBox="0 0 16 16" width="11" height="11" fill="currentColor" aria-hidden="true"><polygon points="4,2 14,8 4,14"></polygon></svg>
             <span>Watch here</span>
           </button>
           <a class="yt-direct-btn" href="${videoUrl(journey.id)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(journey.title)} on YouTube (opens in a new tab)">
             <span>Open on YouTube</span>
-            <span aria-hidden="true">↗</span>
+            <svg class="arrow-icon" viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="12" y2="4"></line><polyline points="5 4 12 4 12 11"></polyline></svg>
           </a>
         </div>
       </div>
@@ -408,7 +408,7 @@ function setupMap() {
           <span class="destination-name">${escapeHtml(journey.place)}</span>
           <span class="destination-region">${escapeHtml(journey.region)}</span>
         </div>
-        <span class="destination-chevron" aria-hidden="true">→</span>
+        <svg class="destination-chevron" viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="8" x2="13" y2="8"></line><polyline points="9 4 13 8 9 12"></polyline></svg>
       </button>
     `).join("");
   }
@@ -459,7 +459,7 @@ function setupMap() {
       <div style="min-width: 180px;">
         <h4 class="popup-title">${escapeHtml(journey.place)}</h4>
         <div class="popup-video-title">${escapeHtml(journey.title)}</div>
-        <button class="popup-link popup-watch" type="button" data-play="${journey.id}">Watch this walk ▶</button>
+        <button class="popup-link popup-watch" type="button" data-play="${journey.id}">Watch this walk <svg viewBox="0 0 16 16" width="10" height="10" fill="currentColor" aria-hidden="true" style="vertical-align: middle;"><polygon points="4,2 14,8 4,14"></polygon></svg></button>
       </div>
     `;
 
@@ -621,7 +621,7 @@ function setupDispatchesForm() {
 // ---------------------------------------------------------------------------
 // 9. Latest Uploads (live YouTube RSS → rss2json proxy)
 // ---------------------------------------------------------------------------
-(function setupLatestUploads() {
+function setupLatestUploads() {
   const CHANNEL_ID = "UCw_YDvJ1Em89PRyywEhOykQ";
   const RSS_URL    = `https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`;
   const PROXY_URL  = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_URL)}&count=15`;
@@ -715,7 +715,7 @@ function setupDispatchesForm() {
     if (loadEl) loadEl.remove();
     grid.insertAdjacentHTML("beforeend", `
       <div class="latest-error">
-        <span>Could not load uploads. <a class="underlined-link" href="https://www.youtube.com/@theQuiet_Atlas/videos" target="_blank" rel="noopener noreferrer">View on YouTube ↗</a></span>
+        <span>Could not load uploads. <a class="underlined-link" href="https://www.youtube.com/@theQuiet_Atlas/videos" target="_blank" rel="noopener noreferrer">View on YouTube <svg class="arrow-icon" viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="12" y2="4"></line><polyline points="5 4 12 4 12 11"></polyline></svg></a></span>
       </div>`);
   }
 
@@ -735,7 +735,7 @@ function setupDispatchesForm() {
       if (videos.length) {
         videosGrid.insertAdjacentHTML("beforeend", videos.map(i => buildCard(i, false)).join(""));
       } else {
-        videosGrid.insertAdjacentHTML("beforeend", `<div class="latest-error"><span>No videos yet — <a class="underlined-link" href="https://www.youtube.com/@theQuiet_Atlas/videos" target="_blank" rel="noopener noreferrer">browse on YouTube ↗</a></span></div>`);
+        videosGrid.insertAdjacentHTML("beforeend", `<div class="latest-error"><span>No videos yet — <a class="underlined-link" href="https://www.youtube.com/@theQuiet_Atlas/videos" target="_blank" rel="noopener noreferrer">browse on YouTube <svg class="arrow-icon" viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="12" y2="4"></line><polyline points="5 4 12 4 12 11"></polyline></svg></a></span></div>`);
       }
 
       // Populate shorts
@@ -743,7 +743,7 @@ function setupDispatchesForm() {
       if (shorts.length) {
         shortsGrid.insertAdjacentHTML("beforeend", shorts.map(i => buildCard(i, true)).join(""));
       } else {
-        shortsGrid.insertAdjacentHTML("beforeend", `<div class="latest-error"><span>No Shorts found — <a class="underlined-link" href="https://www.youtube.com/@theQuiet_Atlas/shorts" target="_blank" rel="noopener noreferrer">browse on YouTube ↗</a></span></div>`);
+        shortsGrid.insertAdjacentHTML("beforeend", `<div class="latest-error"><span>No Shorts found — <a class="underlined-link" href="https://www.youtube.com/@theQuiet_Atlas/shorts" target="_blank" rel="noopener noreferrer">browse on YouTube <svg class="arrow-icon" viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="12" y2="4"></line><polyline points="5 4 12 4 12 11"></polyline></svg></a></span></div>`);
       }
 
       // Wire new cards into the reveal observer (if scroll effects already ran)
@@ -762,12 +762,12 @@ function setupDispatchesForm() {
       showError(videosGrid, videosLoad);
       showError(shortsGrid, shortsLoad);
     });
-})();
+}
 
 // ---------------------------------------------------------------------------
 // 10. Initialization
 // ---------------------------------------------------------------------------
-document.addEventListener("DOMContentLoaded", () => {
+function initApp() {
   renderProof();
   renderJourneys("all");
   setupFilterButtons();
@@ -778,8 +778,15 @@ document.addEventListener("DOMContentLoaded", () => {
   setupDispatchesForm();
   setupCopyLink();
   setupNavigation();
+  setupLatestUploads();
   setupScrollEffects();
 
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initApp);
+} else {
+  initApp();
+}
