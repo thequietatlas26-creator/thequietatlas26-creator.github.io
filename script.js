@@ -1,5 +1,5 @@
 /**
- * THE QUIET ATLAS -- Interactive Companion Engine
+ * THE QUIET ATLAS — Interactive Companion Engine
  * Handles the on-page video theater, featured journey cards, the 9:16 promotional
  * reel, the interactive map, category filters, and smooth UI animations.
  */
@@ -9,7 +9,7 @@ const SUBSCRIBE_URL = `${YOUTUBE_CHANNEL}?sub_confirmation=1`;
 
 /**
  * Optional social proof. Leave a value empty ("") to hide it.
- * Update these by hand when you want to show them -- nothing here is fetched or invented.
+ * Update these by hand when you want to show them — nothing here is fetched or invented.
  *   subscribers: "12.4K"      totalViews: "480K"
  *   quote: { text: "Beautifully calm.", author: "Viewer comment" }
  */
@@ -17,17 +17,17 @@ const CHANNEL_PROOF = {
   subscribers: "",
   totalViews: "",
   quote: {
-    text: "A rare kind of travel video that lets Europe breathe. No rush, no shouting -- just the quiet rhythm of walking.",
+    text: "A rare kind of travel video that lets Europe breathe. No rush, no shouting — just the quiet rhythm of walking.",
     author: "YouTube viewer"
   }
 };
 
-// The six FEATURED walks. The channel has many more -- add new ones here to feature them.
+// The six FEATURED walks. The channel has many more — add new ones here to feature them.
 const journeys = [
   {
     id: "_m3B7nm6fZk",
     title: "Can You Just Walk Across The German-Polish Border?",
-    place: "G�rlitz - Zgorzelec",
+    place: "Görlitz – Zgorzelec",
     region: "Germany / Poland Border",
     group: "borderlands",
     lat: 51.153,
@@ -38,8 +38,8 @@ const journeys = [
   {
     id: "AAV2V21bz-g",
     title: "I Walked Across The German Border Along The Beach",
-    place: "Swinoujscie",
-    region: "Baltic Coast � Poland / Germany",
+    place: "Świnoujście",
+    region: "Baltic Coast · Poland / Germany",
     group: "borderlands",
     lat: 53.910,
     lon: 14.247,
@@ -48,8 +48,8 @@ const journeys = [
   },
   {
     id: "P5XYaqQoxdw",
-    title: "I Investigated Poland's "Ugliest" City, L�dz",
-    place: "L�dz",
+    title: "I Investigated Poland's “Ugliest” City, Łódź",
+    place: "Łódź",
     region: "Central Poland",
     group: "cities",
     lat: 51.759,
@@ -61,29 +61,29 @@ const journeys = [
     id: "cr4Oxhz67iQ",
     title: "Discover Opole, Poland: Market Square & First Impressions",
     place: "Opole",
-    region: "Silesia � Southern Poland",
+    region: "Silesia · Southern Poland",
     group: "cities",
     lat: 50.675,
     lon: 17.921,
     badge: "Silesian Gem",
-    description: "Strolling the pastel Renaissance market square, the tranquil Mlyn�wka Canal, and centuries of Silesian architectural heritage."
+    description: "Strolling the pastel Renaissance market square, the tranquil Młynówka Canal, and centuries of Silesian architectural heritage."
   },
   {
     id: "Gzc_Trn2ODE",
     title: "Walking Along Warsaw's Royal Route",
     place: "Warsaw",
-    region: "Capital Region � Central Poland",
+    region: "Capital Region · Central Poland",
     group: "streets",
     lat: 52.229,
     lon: 21.012,
     badge: "Royal Route",
-    description: "A contemplative stroll from Royal Castle Square along Krakowskie Przedmiescie and Nowy Swiat through the heart of Warsaw."
+    description: "A contemplative stroll from Royal Castle Square along Krakowskie Przedmieście and Nowy Świat through the heart of Warsaw."
   },
   {
     id: "Bq4qx--alHY",
     title: "From Stettin to Szczecin: Poland's Hidden Maritime City",
     place: "Szczecin",
-    region: "West Pomerania � North-west Poland",
+    region: "West Pomerania · North-west Poland",
     group: "streets",
     lat: 53.428,
     lon: 14.552,
@@ -135,8 +135,8 @@ function renderProof() {
   const q = CHANNEL_PROOF.quote;
   const quote = q && q.text
     ? `<figure class="proof-quote">
-         <blockquote>"${escapeHtml(q.text)}"</blockquote>
-         ${q.author ? `<figcaption>-- ${escapeHtml(q.author)}</figcaption>` : ""}
+         <blockquote>“${escapeHtml(q.text)}”</blockquote>
+         ${q.author ? `<figcaption>— ${escapeHtml(q.author)}</figcaption>` : ""}
        </figure>`
     : "";
 
@@ -144,7 +144,7 @@ function renderProof() {
 }
 
 // ---------------------------------------------------------------------------
-// 2. Featured Theater -- plays videos on this page, keeps visitors here longer
+// 2. Featured Theater — plays videos on this page, keeps visitors here longer
 // ---------------------------------------------------------------------------
 let theaterIndex = 0;
 
@@ -186,11 +186,11 @@ function showTheaterPoster(index) {
       els.posterImg.src = thumbUrl(journey.id);
     };
     els.posterImg.src = highResThumbUrl(journey.id);
-    els.posterImg.alt = `${journey.title} -- video thumbnail`;
+    els.posterImg.alt = `${journey.title} — video thumbnail`;
   }
-  if (els.label) els.label.innerHTML = `WATCH � <b>${pad2(index + 1)} / ${pad2(journeys.length)}</b>`;
+  if (els.label) els.label.innerHTML = `WATCH · <b>${pad2(index + 1)} / ${pad2(journeys.length)}</b>`;
   if (els.nowPlaying) els.nowPlaying.textContent = journey.place;
-  if (els.eyebrow) els.eyebrow.textContent = `${journey.place} � ${journey.region}`;
+  if (els.eyebrow) els.eyebrow.textContent = `${journey.place} · ${journey.region}`;
   if (els.title) els.title.textContent = journey.title;
   if (els.desc) els.desc.textContent = journey.description;
   if (els.ytBtn) els.ytBtn.href = videoUrl(journey.id);
@@ -206,7 +206,7 @@ function playTheater(index) {
   const journey = journeys[index];
   if (!els.stage || !journey) return;
 
-  // Opening from file:// can't embed (YouTube blocks it, Error 153) -- open YouTube instead.
+  // Opening from file:// can't embed (YouTube blocks it, Error 153) — open YouTube instead.
   if (window.location.protocol === "file:") {
     window.open(videoUrl(journey.id), "_blank", "noopener,noreferrer");
     return;
@@ -218,7 +218,7 @@ function playTheater(index) {
   const iframe = document.createElement("iframe");
   iframe.className = "theater-iframe";
   iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(journey.id)}?autoplay=1&rel=0`;
-  iframe.title = `The Quiet Atlas -- ${journey.title}`;
+  iframe.title = `The Quiet Atlas — ${journey.title}`;
   iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
   iframe.allowFullscreen = true;
   iframe.referrerPolicy = "strict-origin-when-cross-origin";
@@ -262,7 +262,7 @@ function renderJourneys(filter = "all") {
              loading="lazy"
              decoding="async"
              onerror="this.onerror=null; this.src='${thumbUrl(journey.id)}';">
-        <span class="card-play-pill" aria-hidden="true">&#x25B6;</span>
+        <span class="card-play-pill" aria-hidden="true">▶</span>
       </button>
 
       <div class="journey-body">
@@ -275,12 +275,12 @@ function renderJourneys(filter = "all") {
 
         <div class="journey-actions-row">
           <button class="quick-load-btn" type="button" data-play="${journey.id}">
-            <span aria-hidden="true">&#x25B6;</span>
+            <span aria-hidden="true">▶</span>
             <span>Watch here</span>
           </button>
           <a class="yt-direct-btn" href="${videoUrl(journey.id)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHtml(journey.title)} on YouTube (opens in a new tab)">
             <span>Open on YouTube</span>
-            <span aria-hidden="true">&#x2197;</span>
+            <span aria-hidden="true">↗</span>
           </a>
         </div>
       </div>
@@ -396,7 +396,7 @@ function setupPromoReel() {
 }
 
 // ---------------------------------------------------------------------------
-// 5. Interactive Map (CARTO Dark Matter tiles, OpenStreetMap data -- no API key)
+// 5. Interactive Map (CARTO Dark Matter tiles, OpenStreetMap data — no API key)
 // ---------------------------------------------------------------------------
 function setupMap() {
   const list = document.getElementById("destination-list");
@@ -408,7 +408,7 @@ function setupMap() {
           <span class="destination-name">${escapeHtml(journey.place)}</span>
           <span class="destination-region">${escapeHtml(journey.region)}</span>
         </div>
-        <span class="destination-chevron" aria-hidden="true">-></span>
+        <span class="destination-chevron" aria-hidden="true">→</span>
       </button>
     `).join("");
   }
@@ -459,7 +459,7 @@ function setupMap() {
       <div style="min-width: 180px;">
         <h4 class="popup-title">${escapeHtml(journey.place)}</h4>
         <div class="popup-video-title">${escapeHtml(journey.title)}</div>
-        <button class="popup-link popup-watch" type="button" data-play="${journey.id}">Watch this walk &#x25B6;</button>
+        <button class="popup-link popup-watch" type="button" data-play="${journey.id}">Watch this walk ▶</button>
       </div>
     `;
 
@@ -522,7 +522,7 @@ function setupCopyLink() {
       return;
     }
     navigator.clipboard.writeText(SUBSCRIBE_URL)
-      .then(() => flash("Link Copied! &#x2713;", true))
+      .then(() => flash("Link Copied! ✓", true))
       .catch(() => window.prompt("Copy channel URL:", SUBSCRIBE_URL));
   });
 }
@@ -609,7 +609,7 @@ function setupDispatchesForm() {
 
     input.value = "";
     feedback.className = "form-feedback success";
-    feedback.textContent = "&#x2713; Thank you for following along! You will be notified when new walking journeys drop.";
+    feedback.textContent = "✓ Thank you for following along! You will be notified when new walking journeys drop.";
 
     setTimeout(() => {
       feedback.textContent = "";
@@ -619,7 +619,7 @@ function setupDispatchesForm() {
 }
 
 // ---------------------------------------------------------------------------
-// 9. Latest Uploads (live YouTube RSS -> rss2json proxy)
+// 9. Latest Uploads (live YouTube RSS → rss2json proxy)
 // ---------------------------------------------------------------------------
 (function setupLatestUploads() {
   const CHANNEL_ID = "UCw_YDvJ1Em89PRyywEhOykQ";
@@ -635,7 +635,7 @@ function setupDispatchesForm() {
 
   if (!videosGrid || !shortsGrid) return;
 
-  // -- Tab switching ----------------------------------------------------------
+  // ── Tab switching ──────────────────────────────────────────────────────────
   tabButtons.forEach(btn => {
     btn.addEventListener("click", () => {
       tabButtons.forEach(b => { b.classList.remove("active"); b.setAttribute("aria-selected", "false"); });
@@ -648,7 +648,7 @@ function setupDispatchesForm() {
     });
   });
 
-  // -- Helpers ----------------------------------------------------------------
+  // ── Helpers ────────────────────────────────────────────────────────────────
   function isShort(item) {
     // Shorts appear with /shorts/ in the link, or the title contains #shorts / #short
     return /\/shorts\//i.test(item.link) || /#shorts?\b/i.test(item.title);
@@ -705,7 +705,7 @@ function setupDispatchesForm() {
           <p class="latest-info-title">${title}</p>
           <div class="latest-info-meta">
             <span>${date}</span>
-            ${views ? `<span class="sep">�</span><span>${views}</span>` : ""}
+            ${views ? `<span class="sep">·</span><span>${views}</span>` : ""}
           </div>
         </div>
       </a>`;
@@ -715,11 +715,11 @@ function setupDispatchesForm() {
     if (loadEl) loadEl.remove();
     grid.insertAdjacentHTML("beforeend", `
       <div class="latest-error">
-        <span>Could not load uploads. <a class="underlined-link" href="https://www.youtube.com/@theQuiet_Atlas/videos" target="_blank" rel="noopener noreferrer">View on YouTube &#x2197;</a></span>
+        <span>Could not load uploads. <a class="underlined-link" href="https://www.youtube.com/@theQuiet_Atlas/videos" target="_blank" rel="noopener noreferrer">View on YouTube ↗</a></span>
       </div>`);
   }
 
-  // -- Fetch ------------------------------------------------------------------
+  // ── Fetch ──────────────────────────────────────────────────────────────────
   fetch(PROXY_URL)
     .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
     .then(data => {
@@ -735,7 +735,7 @@ function setupDispatchesForm() {
       if (videos.length) {
         videosGrid.insertAdjacentHTML("beforeend", videos.map(i => buildCard(i, false)).join(""));
       } else {
-        videosGrid.insertAdjacentHTML("beforeend", `<div class="latest-error"><span>No videos yet -- <a class="underlined-link" href="https://www.youtube.com/@theQuiet_Atlas/videos" target="_blank" rel="noopener noreferrer">browse on YouTube &#x2197;</a></span></div>`);
+        videosGrid.insertAdjacentHTML("beforeend", `<div class="latest-error"><span>No videos yet — <a class="underlined-link" href="https://www.youtube.com/@theQuiet_Atlas/videos" target="_blank" rel="noopener noreferrer">browse on YouTube ↗</a></span></div>`);
       }
 
       // Populate shorts
@@ -743,7 +743,7 @@ function setupDispatchesForm() {
       if (shorts.length) {
         shortsGrid.insertAdjacentHTML("beforeend", shorts.map(i => buildCard(i, true)).join(""));
       } else {
-        shortsGrid.insertAdjacentHTML("beforeend", `<div class="latest-error"><span>No Shorts found -- <a class="underlined-link" href="https://www.youtube.com/@theQuiet_Atlas/shorts" target="_blank" rel="noopener noreferrer">browse on YouTube &#x2197;</a></span></div>`);
+        shortsGrid.insertAdjacentHTML("beforeend", `<div class="latest-error"><span>No Shorts found — <a class="underlined-link" href="https://www.youtube.com/@theQuiet_Atlas/shorts" target="_blank" rel="noopener noreferrer">browse on YouTube ↗</a></span></div>`);
       }
 
       // Wire new cards into the reveal observer (if scroll effects already ran)
