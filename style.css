@@ -711,16 +711,11 @@ h1 em, h2 em, h3 em {
   gap: 8px;
 }
 
-.channel-name-row h3 {
+.channel-name {
   font: 700 16px var(--sans);
   margin: 0;
   letter-spacing: -0.01em;
-}
-
-.verified-badge {
-  color: var(--gold-light);
-  display: grid;
-  place-items: center;
+  color: var(--ivory);
 }
 
 .channel-bilingual {
@@ -769,6 +764,90 @@ h1 em, h2 em, h3 em {
   background: var(--gold);
   color: var(--ink);
   border-color: var(--gold);
+}
+
+.channel-philosophy-bar {
+  margin-top: 24px;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  text-align: center;
+}
+
+.channel-philosophy-text {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ivory-dim);
+  font-style: italic;
+}
+
+.proof-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+  padding-top: 28px;
+  margin-top: 24px;
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.proof-stats {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.proof-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.proof-value {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--gold-light);
+  line-height: 1;
+}
+
+.proof-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted-light);
+}
+
+.proof-quote {
+  flex: 1;
+  min-width: 280px;
+  max-width: 520px;
+  margin: 0;
+  border-left: 2px solid var(--gold);
+  padding-left: 18px;
+}
+
+.proof-quote blockquote {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ivory);
+}
+
+.proof-quote figcaption {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--gold-light);
+  margin-top: 6px;
+  letter-spacing: 0.04em;
 }
 
 /* --------------------------------------------------------------------------
@@ -1981,6 +2060,103 @@ h1 em, h2 em, h3 em {
 }
 
 /* --------------------------------------------------------------------------
+   The Quiet Dispatches Section (Email Notification Signup)
+   -------------------------------------------------------------------------- */
+.dispatches-section {
+  background: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+
+.dispatches-card {
+  background: linear-gradient(135deg, rgba(23, 34, 44, 0.7) 0%, rgba(13, 19, 24, 0.95) 100%);
+  border: 1px solid var(--line-gold);
+  border-radius: 12px;
+  padding: 56px 48px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.dispatches-content h2 {
+  font-size: clamp(30px, 3.8vw, 46px);
+  line-height: 1.15;
+  margin: 0 0 16px;
+}
+
+.dispatches-desc {
+  color: var(--ivory-dim);
+  font-size: 15.5px;
+  line-height: 1.75;
+  max-width: 580px;
+  margin: 0 auto 30px;
+}
+
+.dispatches-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.dispatches-form .input-group {
+  display: flex;
+  gap: 12px;
+  background: rgba(13, 19, 24, 0.85);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 6px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dispatches-form .input-group:focus-within {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(185, 154, 98, 0.15);
+}
+
+.dispatches-form input[type="email"] {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 12px 16px;
+  font-family: var(--sans);
+  font-size: 14.5px;
+  color: var(--ivory);
+  outline: none;
+}
+
+.dispatches-form input[type="email"]::placeholder {
+  color: var(--muted);
+}
+
+.dispatches-form .button {
+  padding: 12px 24px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.dispatches-note {
+  font-size: 11.5px;
+  color: var(--muted);
+  margin-top: 12px;
+  letter-spacing: 0.02em;
+}
+
+.form-feedback {
+  margin-top: 14px;
+  font-size: 13.5px;
+  min-height: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.form-feedback.success {
+  color: #6ee7b7;
+}
+
+.form-feedback.error {
+  color: #fca5a5;
+}
+
+/* --------------------------------------------------------------------------
    Closing Section
    -------------------------------------------------------------------------- */
 .closing {
@@ -2299,6 +2475,27 @@ h1 em, h2 em, h3 em {
   }
   .scroll-cue {
     display: none;
+  }
+  .dispatches-card {
+    padding: 36px 20px;
+  }
+  .dispatches-form .input-group {
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  .dispatches-form input[type="email"] {
+    background: rgba(13, 19, 24, 0.85);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    margin-bottom: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .dispatches-form .button {
+    width: 100%;
+    justify-content: center;
   }
   .all-journeys-grid {
     grid-template-columns: 1fr;
